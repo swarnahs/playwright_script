@@ -1,10 +1,14 @@
-# Python
+# Ignore virtual environment
+venv/
+.env
+
+# Python cache
 __pycache__/
 *.pyc
-.venv/
 
-# Playwright session (do NOT commit)
-auth.json
+# VS Code settings
+.vscode/
 
-# Output data (optional, you can keep or ignore)
-products.json
+# OS files
+.DS_Store
+Thumbs.db
