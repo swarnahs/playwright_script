@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Test Page</title>
+<style>
+  .card { padding: 10px; margin: 5px; border: 1px solid #333; display: inline-block; cursor: pointer; }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+
+<h2>Login</h2>
+<form id="login-form">
+  <input id="username" placeholder="Username"/>
+  <input id="password" placeholder="Password" type="password"/>
+  <button type="submit">Login</button>
+</form>
+
+<h2>Dashboard</h2>
+<div id="dashboard-card" class="card hidden">Dashboard</div>
+<div id="inventory-card" class="card hidden">Inventory</div>
+<div id="catalog-card" class="card hidden">Catalog</div>
+<button id="view-data" class="hidden">View Complete Data</button>
+
+<table id="product-table" class="hidden" border="1">
+  <thead>
+    <tr><th>Product</th><th>Price</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Product 1</td><td>100</td></tr>
+    <tr><td>Product 2</td><td>200</td></tr>
+  </tbody>
+</table>
+
+<button id="next-page" class="hidden">Next</button>
+
+<script>
+  // Show cards after login
+  const loginForm = document.getElementById("login-form");
+  loginForm.addEventListener("submit", e => {
+    e.preventDefault();
+    loginForm.classList.add("hidden");
+    document.getElementById("dashboard-card").classList.remove("hidden");
+  });
+
+  // Card clicks
+  document.getElementById("dashboard-card").addEventListener("click", () => {
+    document.getElementById("inventory-card").classList.remove("hidden");
+  });
+  document.getElementById("inventory-card").addEventListener("click", () => {
+    document.getElementById("catalog-card").classList.remove("hidden");
+  });
+  document.getElementById("catalog-card").addEventListener("click", () => {
+    document.getElementById("view-data").classList.remove("hidden");
+  });
+  document.getElementById("view-data").addEventListener("click", () => {
+    document.getElementById("product-table").classList.remove("hidden");
+    document.getElementById("next-page").classList.remove("hidden");
+  });
+
+  // Pagination (2 pages)
+  let page = 1;
+  document.getElementById("next-page").addEventListener("click", () => {
+    page++;
+    const tbody = document.querySelector("#product-table tbody");
+    tbody.innerHTML = ""; // clear
+    if(page === 2){
+      tbody.innerHTML = `<tr><td>Product 3</td><td>300</td></tr>
+                         <tr><td>Product 4</td><td>400</td></tr>`;
+      document.getElementById("next-page").disabled = true;
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,14 +1,7 @@
-# Ignore virtual environment
-venv/
-.env
-
-# Python cache
-__pycache__/
-*.pyc
-
-# VS Code settings
+# Virtual environment
+env/
+# Output JSON data and Playwright session
+*.json
+# VS Code/tags
 .vscode/
-
-# OS files
-.DS_Store
-Thumbs.db
+__pycache__/
